@@ -1,3 +1,5 @@
-*.zip
-*instaladores
-/.metadata/
+.metadata
+*.*
+!*.java
+!*.md
+!*.pdf
