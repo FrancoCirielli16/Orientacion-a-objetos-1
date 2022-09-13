@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unlp.info.oo1.Ejercicio3.Item;
+import ar.edu.unlp.info.oo1.Ejercicio3.Presupuesto;
+
 
 public class PresupuestoTest {
 
