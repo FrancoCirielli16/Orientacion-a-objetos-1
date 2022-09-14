@@ -1,1 +1,1 @@
-<h1 align="center"><img src="https://media.giphy.com/media/3oKIPkHXpUP8lIO0AU/giphy.gif" height="38" /> 💻Orientacion a Obejetos💻<img style="transform:scaleX(-1);" src="https://media.giphy.com/media/3oKIPkHXpUP8lIO0AU/giphy.gif" height="38" /></h1>
+<h1 align="center"><img src="https://media.giphy.com/media/3oKIPkHXpUP8lIO0AU/giphy.gif" height="38" /> 💻Orientacion a Objetos💻<img style="transform:scaleX(-1);" src="https://media.giphy.com/media/3oKIPkHXpUP8lIO0AU/giphy.gif" height="38" /></h1>
