@@ -10,17 +10,13 @@ public class CajaDeAhorro extends Cuenta {
 		super.depositar(monto - (monto*0.02));
 	}
 	
-	public void extraerSaldo(double monto) {
-		super.extraer(monto + (monto*0.02));
-	}
-	
-	public void transferir(double monto,CajaDeAhorro cajaDeAhorro) {
-		super.transferirACuenta(monto+(monto*0.02), cajaDeAhorro);
+	protected void extraerSinControlar(double monto) {
+		super.extraerSinControlar(monto + monto*0.02);
 	}
 	
 	@Override
 	public boolean puedeExtraer(double monto) {
-		if(this.getSaldo()>=monto) {
+		if(this.getSaldo()>= monto + (monto*0.02)) {
 			return true;
 		}
 		return false;

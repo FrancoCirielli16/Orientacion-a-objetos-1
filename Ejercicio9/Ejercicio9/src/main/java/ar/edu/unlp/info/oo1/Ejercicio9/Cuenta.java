@@ -15,9 +15,6 @@ public abstract class Cuenta {
 		this.saldo -= monto;
 	}
 	
-	
-	
-	
 	public double getSaldo() {
 		return saldo;
 	}

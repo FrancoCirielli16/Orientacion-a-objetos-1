@@ -24,7 +24,7 @@ class CajaDeAhorroTest {
 	@Test
 	void testExtraer() {
 		this.cajaDeAhorro1.depositar(500);
-		cajaDeAhorro1.extraerSaldo(450);
+		cajaDeAhorro1.extraer(450);
 		assertEquals(31,cajaDeAhorro1.getSaldo());
 		
 	}
@@ -38,7 +38,7 @@ class CajaDeAhorroTest {
 	@Test
 	void testHacerTranferir(){
 		this.cajaDeAhorro1.depositar(1000);
-		cajaDeAhorro1.transferir(500, cajaDeAhorro2);
+		cajaDeAhorro1.transferirACuenta(500, cajaDeAhorro2);
 	    assertEquals(470,this.cajaDeAhorro1.getSaldo());
 	    assertEquals(490,this.cajaDeAhorro2.getSaldo());
 	}

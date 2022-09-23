@@ -37,6 +37,6 @@ class CuentaCorrienteTest {
 		cuentaCorriente1.setLimiteDescubierto(500);
 		cuentaCorriente1.depositar(100);
 		assertTrue(cuentaCorriente1.transferirACuenta(500, cuentaCorriente2));
-		assertEquals(-300,cuentaCorriente1.getSaldo());
+		assertEquals(-400,cuentaCorriente1.getSaldo());
 	}
 }
