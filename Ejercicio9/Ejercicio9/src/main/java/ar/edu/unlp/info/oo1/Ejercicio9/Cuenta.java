@@ -3,7 +3,9 @@ package ar.edu.unlp.info.oo1.Ejercicio9;
 public abstract class Cuenta {
 	private double saldo;
 	
-	
+	public Cuenta() {
+		this.saldo=0;
+	}
 	
 	public void depositar(double monto) {
 		this.saldo += monto;
@@ -21,6 +23,7 @@ public abstract class Cuenta {
 	}
 
 	public abstract boolean puedeExtraer(double monto);
+	
 	
 	public boolean extraer(double monto) {
 		if(this.puedeExtraer(monto)) {
