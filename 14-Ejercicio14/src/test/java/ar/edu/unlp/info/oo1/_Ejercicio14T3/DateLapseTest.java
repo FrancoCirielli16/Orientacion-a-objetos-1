@@ -10,15 +10,17 @@ import org.junit.jupiter.api.Test;
 
 public class DateLapseTest {
 	private DateLapse date;
-	private LocalDate from,fechaAComparar;
+	private LocalDate from,to,fechaAComparar;
 	
 	@BeforeEach
 	public void setUp() {
 		this.from=LocalDate.of(2020, 5, 5);
+		this.to=LocalDate.of(2022, 12, 16);
 		this.fechaAComparar=LocalDate.of(2022, 10, 5);
 		this.date=new DateLapse(this.from,955);
 	}
 	
+
 	@Test
 	public void getFromTest() {
 		assertEquals(this.from,this.date.getFrom());
@@ -26,7 +28,7 @@ public class DateLapseTest {
 	
 	@Test
 	public void getToTest() {
-		assertEquals(this.date.getFrom().plusDays(this.date.sizeInDays()),this.date.getTo());
+		assertEquals(this.to,this.date.getTo());
 	}
 	
 	@Test

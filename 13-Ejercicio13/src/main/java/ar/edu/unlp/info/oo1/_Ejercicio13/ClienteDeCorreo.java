@@ -10,7 +10,7 @@ public class ClienteDeCorreo {
 	public ClienteDeCorreo(String carpeta) {
 		this.inbox=new Carpeta(carpeta);
 		this.carpetas=new ArrayList<Carpeta>();
-		//this.carpetas.add(inbox);
+		this.carpetas.add(inbox);
 	}
 
 	public void agregarCarpeta(Carpeta carpeta) {
@@ -35,7 +35,7 @@ public class ClienteDeCorreo {
 	}
 
 	public int espacioOcupado() {
-		return this.carpetas.stream().mapToInt(C -> C.tamanioCarpeta()).sum() + this.inbox.tamanioCarpeta();
+		return this.carpetas.stream().mapToInt(C -> C.tamanioCarpeta()).sum();
 	}
 
 	public Carpeta getInbox() {
