@@ -20,8 +20,12 @@ public class Reserva {
 	public boolean validarFecha(LocalDate f) {
 		return this.periodo.getTo().isAfter(f);
 	}
+	
 	public boolean validarPeriodo(DateLapse periodo) {
 		return this.periodo.OverLapse(periodo);
 	}
-
+	
+	public boolean esUsuario(Usuario nombre) {
+		return this.inquilino.equals(nombre);
+	}
 }

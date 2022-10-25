@@ -3,6 +3,7 @@ package ar.edu.unlp.info.oo1.Ejercicio15;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Propiedad {
 	private String nombre;
@@ -41,17 +42,21 @@ public class Propiedad {
 	public boolean eliminarReserva(Reserva r) {
 		LocalDate f = LocalDate.now();
 		if (r.validarFecha(f)){
-			this.reservas.remove(r);
+			reservas.remove(r);
 			return true;
 		}
 		else 
 			return false;
 	}
 	
-	
+	public List<Reserva> devolverReservas(Usuario usuario){
+		return this.reservas.stream().filter(R -> R.esUsuario(usuario)).collect(Collectors.toList());
+	}
 	
 	public double getPrecioPorNoche() {
 		return this.precioPorNoche;
 	}
+	
+	
 
 }
