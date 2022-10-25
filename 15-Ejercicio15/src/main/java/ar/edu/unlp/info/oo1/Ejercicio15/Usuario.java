@@ -1,4 +1,4 @@
-package ar.edu.unlp.oo1.Ejercicio15;
+package ar.edu.unlp.info.oo1.Ejercicio15;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class Usuario {
 		return P;
 	}
 	
-	public double calcularIngreso(LocalDate fecha1, LocalDate fecha2) {
-		return this.propiedades.stream().mapToDouble(P -> P.calcularIngreso(fecha1, fecha2)).sum();
+	public double calcularIngreso(DateLapse periodo) {
+		return this.propiedades.stream().mapToDouble(P -> P.calcularIngreso(periodo)).sum();
 	}
 }

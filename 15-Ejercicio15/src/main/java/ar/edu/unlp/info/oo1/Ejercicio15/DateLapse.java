@@ -1,4 +1,4 @@
-package ar.edu.unlp.oo1.Ejercicio15;
+package ar.edu.unlp.info.oo1.Ejercicio15;
 
 import java.time.LocalDate;
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -7,7 +7,7 @@ import static java.time.temporal.ChronoUnit.YEARS;
 public class DateLapse implements Fecha{
 	private LocalDate to,from;
 	
-	public DateLapse(LocalDate to, LocalDate from) {
+	public DateLapse(LocalDate from, LocalDate to) {
 		this.to=to;
 		this.from=from;
 	}
@@ -36,7 +36,14 @@ public class DateLapse implements Fecha{
 	}
 	
 	public boolean includesDate(LocalDate other) {
-		return other.isAfter(from) && other.isBefore(to);
+		return other.isEqual(from) || other.isEqual(to) && other.isAfter(from) && other.isBefore(to);
 	}
 	//“recibe un objeto LocalDate y retorna true si la fecha está entre el from y el to del receptor y false en caso contrario”.
+
+	public boolean OverLapse(DateLapse other) {
+		return !((other.to.isEqual(from) || other.to.isBefore(from)) || (other.from.isEqual(to) ||  other.from.isAfter(to)));
+	}
 }
+
+
+

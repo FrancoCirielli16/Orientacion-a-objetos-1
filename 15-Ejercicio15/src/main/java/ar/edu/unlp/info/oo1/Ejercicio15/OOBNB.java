@@ -1,4 +1,4 @@
-package ar.edu.unlp.oo1.Ejercicio15;
+package ar.edu.unlp.info.oo1.Ejercicio15;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,8 +21,8 @@ public class OOBNB {
 		return null;
 	}
 	
-	public double calcularIngresoDePropietario(Usuario usuario, LocalDate fecha1, LocalDate fecha2) {
-		return usuario.calcularIngreso(fecha1, fecha2);
+	public double calcularIngresoDePropietario(Usuario usuario, DateLapse periodo) {
+		return usuario.calcularIngreso(periodo);
 	}
 	
 }

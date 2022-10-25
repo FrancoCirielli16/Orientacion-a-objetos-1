@@ -1,4 +1,4 @@
-package ar.edu.unlp.oo1.Ejercicio15;
+package ar.edu.unlp.info.oo1.Ejercicio15;
 
 import java.time.LocalDate;
 
@@ -17,9 +17,11 @@ public class Reserva {
 		return this.propiedad.getPrecioPorNoche() * this.periodo.sizeInDays();
 	}
 	
-	public boolean validarPeriodo(LocalDate fecha1, LocalDate fecha2) {
-		return this.periodo.includesDate(fecha1) && this.periodo.includesDate(fecha2);
+	public boolean validarFecha(LocalDate f) {
+		return this.periodo.getTo().isAfter(f);
 	}
-	
+	public boolean validarPeriodo(DateLapse periodo) {
+		return this.periodo.OverLapse(periodo);
+	}
 
 }
