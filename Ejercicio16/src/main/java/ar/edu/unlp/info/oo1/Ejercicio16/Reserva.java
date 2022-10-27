@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.Ejercicio15;
+package ar.edu.unlp.info.oo1.Ejercicio16;
 
 import java.time.LocalDate;
 
@@ -22,6 +22,10 @@ public class Reserva {
 		}
 		//return this.propiedad.getPrecioPorNoche() * this.periodo.sizeInDays();
 		return this.propiedad.getPrecioPorNoche() * new DateLapse(ini.getFrom(),fin.getTo()).sizeInDays();	
+	}
+	
+	public double calcularRembolso(LocalDate fecheTentativa) {
+		return this.propiedad.getTipoCancelacion().calcularRembolso(this.periodo.getFrom(), fecheTentativa, this.calcularPrecio(this.periodo));
 	}
 	
 	public boolean validarFecha() {

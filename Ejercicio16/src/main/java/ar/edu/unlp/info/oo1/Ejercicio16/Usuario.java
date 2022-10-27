@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.Ejercicio15;
+package ar.edu.unlp.info.oo1.Ejercicio16;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,8 @@ public class Usuario {
 		return this.propiedades.stream().filter(P -> P.validarPropiedad(periodo) == false).collect(Collectors.toList());
 	}
 	
-	public Propiedad registrarPropiedad(String nombre, String descripcion, String direccion, double precio) {
-		Propiedad P = new Propiedad(nombre,descripcion,direccion,precio);
+	public Propiedad registrarPropiedad(String nombre, String descripcion, String direccion, Politica tipoDePolitica,double precio) {
+		Propiedad P = new Propiedad(nombre,descripcion,direccion,tipoDePolitica,precio);
 		this.propiedades.add(P);
 		return P;
 	}

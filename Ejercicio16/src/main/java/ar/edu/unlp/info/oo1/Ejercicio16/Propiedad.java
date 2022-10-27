@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.Ejercicio15;
+package ar.edu.unlp.info.oo1.Ejercicio16;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,14 +9,16 @@ public class Propiedad {
 	private String nombre;
 	private String descripcion;
 	private String direccion;
+	private Politica tipoDePolitica;
 	private double precioPorNoche;
 	private List<Reserva> reservas;
 
-	public Propiedad(String nombre, String direccion, String descripcion, double precioPorNoche) {
+	public Propiedad(String nombre, String direccion, String descripcion, Politica tipoDePolitica,double precioPorNoche) {
 		this.nombre=nombre;
 		this.direccion=direccion;
 		this.precioPorNoche=precioPorNoche;
 		this.descripcion=descripcion;
+		this.tipoDePolitica=tipoDePolitica;
 		this.reservas=new ArrayList<Reserva>();
 	}
 	
@@ -68,6 +70,9 @@ public class Propiedad {
 		return this.precioPorNoche;
 	}
 	
+	public Politica getTipoCancelacion() {
+		return this.tipoDePolitica;
+	}
 
 	
 	

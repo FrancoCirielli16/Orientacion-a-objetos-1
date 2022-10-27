@@ -24,6 +24,8 @@ public class DateLapse implements Fecha{
 	}	
 	
 	public boolean includesDate(LocalDate other) {
-		return other.isAfter(from) && other.isBefore(this.getTo());
+		return other.isEqual(from) || other.isEqual(this.getTo()) && other.isAfter(from) && other.isBefore(this.getTo());
 	}
+	//“recibe un objeto LocalDate y retorna true si la fecha está entre el from y el to del receptor y false en caso contrario”.
+
 }

@@ -1,5 +1,6 @@
-package ar.edu.unlp.info.oo1.Ejercicio15;
+package ar.edu.unlp.info.oo1.Ejercicio16;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +31,10 @@ public class OOBNB {
 	
 	public double calcularIngresoDePropietario(Usuario usuario, DateLapse periodo) {
 		return usuario.calcularIngreso(periodo);
+	}
+	
+	public double calcularRembolso(Reserva r, LocalDate fechaTentativa) {
+		return r.calcularRembolso(fechaTentativa);
 	}
 	
 }
