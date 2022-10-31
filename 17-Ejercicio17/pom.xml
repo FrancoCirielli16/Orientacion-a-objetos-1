@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ar.edu.unlp.info.oo1</groupId>
-  <artifactId>17-Ejercicio17</artifactId>
+  <artifactId>Ejercicio17</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>17-Ejercicio17</name>
+  <name>Ejercicio17</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
