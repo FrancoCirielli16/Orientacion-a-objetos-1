@@ -11,15 +11,29 @@ public class Empleado {
 	private String apellido;
 	private int cuil;
 	private LocalDate fechaDeNacimiento;
+	private LocalDate fechaDeIngreso;
 	private boolean tieneHijos;
 	private boolean tieneConyuge;
 	private List<Contrato> contratos;
 	
-	public Empleado(String nombre,String apellido,int cuil,LocalDate fechaDeNacimiento,boolean tieneHijos,boolean tieneConyuge) {
+//	public Empleado(String nombre,String apellido,int cuil,LocalDate fechaDeNacimiento,boolean tieneHijos,boolean tieneConyuge) {
+//		this.nombre=nombre;
+//		this.apellido=apellido;
+//		this.cuil=cuil;
+//		this.fechaDeNacimiento=fechaDeNacimiento;
+//		this.fechaDeIngreso= LocalDate.now();
+//		this.tieneHijos=tieneHijos;
+//		this.tieneConyuge=tieneConyuge;
+//		this.contratos= new ArrayList<Contrato>();	
+//		
+//	}
+//	Hago un constructo para testear (solo este caso)
+	public Empleado(String nombre,String apellido,int cuil,LocalDate fechaDeNacimiento,LocalDate fechaDeIngreso,boolean tieneHijos,boolean tieneConyuge) {
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.cuil=cuil;
 		this.fechaDeNacimiento=fechaDeNacimiento;
+		this.fechaDeIngreso= fechaDeIngreso;
 		this.tieneHijos=tieneHijos;
 		this.tieneConyuge=tieneConyuge;
 		this.contratos= new ArrayList<Contrato>();	
@@ -27,21 +41,28 @@ public class Empleado {
 	}
 	
 	public void cargarContratoPorHoras (LocalDate fechaDeInicio,LocalDate fechaDeVencimiento,double valorPorHora,int horasDeTrabajoPorMes) {
-		ContratoPorHoras contrato = new ContratoPorHoras(this,fechaDeInicio,fechaDeVencimiento,valorPorHora,horasDeTrabajoPorMes);
-		this.contratos.add(contrato);
+		if(this.tieneContratoVencido()) {
+			ContratoPorHoras contrato = new ContratoPorHoras(this,fechaDeInicio,fechaDeVencimiento,valorPorHora,horasDeTrabajoPorMes);
+			this.contratos.add(contrato);
+		}
 	}
 	
 	public void cargarContratoDePlanta (LocalDate fechaDeInicio,double sueldoMensual,double montoAcordadoPorConyuge,double montoAcordadoPorHijos) {
-		ContratoDePlanta contrato = new ContratoDePlanta(this,fechaDeInicio,sueldoMensual,montoAcordadoPorConyuge,montoAcordadoPorHijos);
-		this.contratos.add(contrato);
+		if(this.tieneContratoVencido()) {
+			ContratoDePlanta contrato = new ContratoDePlanta(this,fechaDeInicio,sueldoMensual,montoAcordadoPorConyuge,montoAcordadoPorHijos);
+			this.contratos.add(contrato);
+		}
 	}
 	
 	public boolean tieneContratoVencido() {
-		return this.contratoActual().map(c -> c.contratoVencido()).orElse(true);
+		if (this.contratoActual() == null) {
+			return false;
+		}
+		return this.contratoActual().contratoVencido();
 	}
 	
-	private Optional<Contrato> contratoActual() {
-		return this.contratos.stream().max((Contrato c1,Contrato c2) -> c1.getFechaInicio().compareTo(c2.getFechaInicio()));
+	private Contrato contratoActual() {
+		return this.contratos.stream().max((Contrato c1,Contrato c2) -> c1.getFechaInicio().compareTo(c2.getFechaInicio())).orElse(null);
 	}
 	
 	public Recibo generarRecibo(){
@@ -49,32 +70,30 @@ public class Empleado {
 	}
 	
 	public int antiguedad() {
-		return this.contratos.stream()
-				.min((Contrato c1, Contrato c2) -> c1.getFechaInicio().compareTo(c2.getFechaInicio()))
-				.map(contrato -> (int)ChronoUnit.YEARS.between (contrato.getFechaInicio(),LocalDate.now())).orElse(0);
+		return (int)ChronoUnit.YEARS.between(this.fechaDeIngreso, LocalDate.now()); // calculo incorrecto para antiguedad
 	}
 	
 	public double calcularAumento() {
-		if(this.antiguedad()==5) {
+		if((this.antiguedad()>=1) && (this.antiguedad()<=5)) {
 			return 0.3;
 		}
 		else 
-			if(this.antiguedad()==10) {
+			if((this.antiguedad()>5)&&(this.antiguedad()<=10)) {
 				return 0.5;
 			}
 			else
-				if(this.antiguedad()==15) {
+				if((this.antiguedad()>10)&&(this.antiguedad()<=15)) {
 					return 0.7;
 				}
 				else
-					if(this.antiguedad()==20) {
+					if((this.antiguedad()>15)&&(this.antiguedad()<=20)) {
 						return 1;
 					}
 		return 0;
 	}
 	
 	public double calcularMonto() {
-		return this.contratoActual().map(c -> c.calcularMonto() * this.calcularAumento()).orElse(0d);
+		return this.contratoActual().calcularMonto() + this.contratoActual().calcularMonto() * this.calcularAumento();
 	}
 	
 	public boolean esEmpleado(int cuil) {

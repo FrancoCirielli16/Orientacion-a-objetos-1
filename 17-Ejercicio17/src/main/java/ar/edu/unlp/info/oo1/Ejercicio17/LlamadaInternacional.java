@@ -19,14 +19,13 @@ public class LlamadaInternacional extends Llamada{
 
 
 	public double calcularCosto() {
-		if(getFecha().toLocalTime().isAfter(LocalTime.of(8,0)))
-			if ((this.getFecha().getHour() >= 8) && (this.getFecha().getMinute() >= 0) && (this.getFecha().getHour() < 20)) {
-				return super.calcularCosto(4);
-			}
-		 return super.calcularCosto(3); 
-//		return (getFecha().toLocalTime().isAfter(LocalTime.of(8,0)))
-//				? super.calcularCosto(4)
-//				: super.calcularCosto(3);
+//		if(getFecha().toLocalTime().isBefore(LocalTime.of(8,20)))
+//				return super.calcularCosto(4);
+//		 return super.calcularCosto(3); 
+		
+		return (getFecha().toLocalTime().isBefore(LocalTime.of(8,20)))
+				? super.calcularCosto(4)
+				: super.calcularCosto(3);
 	}
 
 }

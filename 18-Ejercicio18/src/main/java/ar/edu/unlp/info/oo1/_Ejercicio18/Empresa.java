@@ -13,8 +13,8 @@ public class Empresa {
 		this.empleados = new ArrayList<Empleado>();
 	}
 	
-	public Empleado darAltaEmpleado(String nombre,String apellido,int cuil, LocalDate fechaNacimiento,boolean tieneHijos,boolean tieneConyuge) {
-		Empleado e = new Empleado(nombre,apellido,cuil,fechaNacimiento,tieneHijos,tieneConyuge);
+	public Empleado darAltaEmpleado(String nombre,String apellido,int cuil, LocalDate fechaNacimiento,LocalDate fechaDeIngreso,boolean tieneHijos,boolean tieneConyuge) {
+		Empleado e = new Empleado(nombre,apellido,cuil,fechaNacimiento,fechaDeIngreso,tieneHijos,tieneConyuge);
 		this.empleados.add(e);
 		return e;
 	}
@@ -28,7 +28,7 @@ public class Empresa {
 	}
 	
 	public List<Empleado> obtenerEmpleadosConContratoVencido(){
-		return this.empleados.stream().filter(e -> e.tieneContratoVencido() == true).collect(Collectors.toList());
+		return this.empleados.stream().filter(e -> e.tieneContratoVencido()).collect(Collectors.toList());
 	}
 	
 	public List<Recibo> generarRecibos(){

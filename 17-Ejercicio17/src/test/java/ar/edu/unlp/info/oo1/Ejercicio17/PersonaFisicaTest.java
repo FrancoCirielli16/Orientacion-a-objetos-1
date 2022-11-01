@@ -16,6 +16,7 @@ class PersonaFisicaTest {
 
 	@Test
 	void testCalcularCosto() {
+		assertEquals(0,this.persona.calcularMonto(LocalDateTime.of(2022, 10, 10, 8, 50), LocalDateTime.of(2022, 12, 10, 20, 30)));
 		this.persona.registrarLlamadaLocal(LocalDateTime.of(2022, 10, 10, 10, 50), 10, null, null);
 		this.persona.registrarLlamadaInterUrbana(LocalDateTime.of(2022, 10, 14, 10, 50), 10, null, null, 80);
 		this.persona.registrarLlamadaInternacional(LocalDateTime.of(2022, 11, 11, 10, 50), 10, null, null, null, null);

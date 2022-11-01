@@ -25,7 +25,7 @@ public abstract class Persona {
 	}
 	
 	public double calcularMonto(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
-		return this.llamadas.stream().filter(l -> l.OverLapse(fechaInicio,fechaFin)).mapToDouble(l -> l.calcularCosto()).sum();
+		return this.llamadas.stream().filter(l -> l.inLapse(fechaInicio,fechaFin)).mapToDouble(l -> l.calcularCosto()).sum();
 	}
 	
 	public LlamadaLocal registrarLlamadaLocal(LocalDateTime fecha, int duracion,String nroEmisor,String nroReceptor) {

@@ -35,7 +35,7 @@ public abstract class Llamada {
 		return this.duracion*monto;
 	}
 	
-	public boolean OverLapse(LocalDateTime fechaInicio,LocalDateTime fechaFin) {
+	public boolean inLapse(LocalDateTime fechaInicio,LocalDateTime fechaFin) {
 		return !((this.fecha.isEqual(fechaInicio) || this.fecha.isBefore(fechaInicio)) || (this.fecha.isEqual(fechaFin) ||  this.fecha.isAfter(fechaFin)));
 	}
 	
