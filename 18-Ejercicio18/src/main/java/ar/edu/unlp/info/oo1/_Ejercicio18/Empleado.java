@@ -40,23 +40,28 @@ public class Empleado {
 		
 	}
 	
-	public void cargarContratoPorHoras (LocalDate fechaDeInicio,LocalDate fechaDeVencimiento,double valorPorHora,int horasDeTrabajoPorMes) {
+	public ContratoPorHoras cargarContratoPorHoras (LocalDate fechaDeInicio,LocalDate fechaDeVencimiento,double valorPorHora,int horasDeTrabajoPorMes) {
+		//if(this.tieneContratoVencido() && fechaDeInicio.isAfter(LocalDate.now())) { //verifico si la fecha de inicio del contrato es correcta
 		if(this.tieneContratoVencido()) {
 			ContratoPorHoras contrato = new ContratoPorHoras(this,fechaDeInicio,fechaDeVencimiento,valorPorHora,horasDeTrabajoPorMes);
 			this.contratos.add(contrato);
+			return contrato;
 		}
+		return null;
 	}
 	
-	public void cargarContratoDePlanta (LocalDate fechaDeInicio,double sueldoMensual,double montoAcordadoPorConyuge,double montoAcordadoPorHijos) {
+	public ContratoDePlanta cargarContratoDePlanta (LocalDate fechaDeInicio,double sueldoMensual,double montoAcordadoPorConyuge,double montoAcordadoPorHijos) {
 		if(this.tieneContratoVencido()) {
 			ContratoDePlanta contrato = new ContratoDePlanta(this,fechaDeInicio,sueldoMensual,montoAcordadoPorConyuge,montoAcordadoPorHijos);
 			this.contratos.add(contrato);
+			return contrato;
 		}
+		return null;
 	}
 	
 	public boolean tieneContratoVencido() {
 		if (this.contratoActual() == null) {
-			return false;
+			return true;
 		}
 		return this.contratoActual().contratoVencido();
 	}
@@ -74,26 +79,27 @@ public class Empleado {
 	}
 	
 	public double calcularAumento() {
-		if((this.antiguedad()>=1) && (this.antiguedad()<=5)) {
+		if((this.antiguedad()>=5) && (this.antiguedad()<10)) {
 			return 0.3;
 		}
 		else 
-			if((this.antiguedad()>5)&&(this.antiguedad()<=10)) {
+			if((this.antiguedad()>=10)&&(this.antiguedad()<15)) {
 				return 0.5;
 			}
 			else
-				if((this.antiguedad()>10)&&(this.antiguedad()<=15)) {
+				if((this.antiguedad()>=15)&&(this.antiguedad()<20)) {
 					return 0.7;
 				}
 				else
-					if((this.antiguedad()>15)&&(this.antiguedad()<=20)) {
+					if(this.antiguedad()>20){
 						return 1;
 					}
 		return 0;
 	}
 	
 	public double calcularMonto() {
-		return this.contratoActual().calcularMonto() + this.contratoActual().calcularMonto() * this.calcularAumento();
+		double monto = this.contratoActual().calcularMonto();
+		return monto + monto * this.calcularAumento();
 	}
 	
 	public boolean esEmpleado(int cuil) {

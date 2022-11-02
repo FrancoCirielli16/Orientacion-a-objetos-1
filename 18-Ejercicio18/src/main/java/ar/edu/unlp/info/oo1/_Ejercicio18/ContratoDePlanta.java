@@ -10,8 +10,8 @@ public class ContratoDePlanta extends Contrato {
 	public ContratoDePlanta(Empleado empleado, LocalDate fechaDeInicio, double sueldoPorMes, double montoAcordadoPorTenerConyuge,double montoAcordadoPorTenerHijos) {
 		super(empleado,fechaDeInicio);
 		this.sueldoPorMes = sueldoPorMes;
-		this.montoPorTenerConyuge = montoPorTenerConyuge;
-		this.montoPorTenerHijos = montoPorTenerHijos;
+		this.montoPorTenerConyuge = montoAcordadoPorTenerConyuge;
+		this.montoPorTenerHijos = montoAcordadoPorTenerHijos;
 	}
 	
 	public boolean contratoVencido() {
@@ -19,12 +19,16 @@ public class ContratoDePlanta extends Contrato {
 	}
 	
 	public double calcularMonto() {
-		if (this.tieneConyuge()) {
+		if(this.getEmpleado().getTieneConyuge() && (this.getEmpleado().getTieneHijos())) {
+			return this.sueldoPorMes+this.montoPorTenerConyuge+this.montoPorTenerHijos;
+		}
+		if (this.getEmpleado().getTieneConyuge()) {
 			return this.sueldoPorMes+this.montoPorTenerConyuge;
-		}else
-			if(this.tieneHijos()) {
-				return this.sueldoPorMes+this.montoPorTenerHijos;
-			}
+		}
+		if(this.getEmpleado().getTieneHijos()) {
+			return this.sueldoPorMes+this.montoPorTenerHijos;
+		}
+		
 		return this.sueldoPorMes;
 	}
 }

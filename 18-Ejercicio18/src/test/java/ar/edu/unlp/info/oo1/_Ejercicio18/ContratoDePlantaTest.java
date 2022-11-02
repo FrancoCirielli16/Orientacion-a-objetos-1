@@ -28,11 +28,8 @@ class ContratoDePlantaTest {
 		this.e3.cargarContratoDePlanta(LocalDate.of(2010, 12, 10), 100, 200, 1000);
 		this.e4.cargarContratoDePlanta(LocalDate.of(2005, 1, 1), 100, 200, 1000);
 		assertEquals(100,this.e1.calcularMonto());
-		assertEquals(300,this.e2.calcularMonto());
-		assertEquals(1100,this.e3.calcularMonto());
-		assertEquals(1300,this.e4.calcularMonto());
-
-		
-
+		assertEquals(1430,this.e2.calcularMonto());
+		assertEquals(450,this.e3.calcularMonto());
+		assertEquals(2210,this.e4.calcularMonto());
 	}
 }

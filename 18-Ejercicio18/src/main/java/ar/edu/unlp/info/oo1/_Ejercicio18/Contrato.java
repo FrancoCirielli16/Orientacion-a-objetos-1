@@ -19,11 +19,8 @@ public abstract class Contrato {
 		return this.fechaDeInicio;
 	}	
 	
-	public boolean tieneConyuge() {
-		return this.empleado.getTieneConyuge();
+	public Empleado getEmpleado() {
+		return this.empleado;
 	}
 	
-	public boolean tieneHijos() {
-		return this.empleado.getTieneConyuge();
-	}
 }
