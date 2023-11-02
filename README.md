@@ -18,7 +18,7 @@ Objetos. Establecer metodologías de análisis y diseño orientados a objetos.
 
 <h2>Examenes</h2>
 
-- [Primera Fecha](/Primer%Parcial.jpeg)
+- [Primera Fecha](/Primer&%Parcial.jpeg)
 - [Segunda Fecha](/Primer%Recuperatorio.jpeg)
 - [Tercera Fecha](/Segundo%Recuperatorio.jpeg) 
 
